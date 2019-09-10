@@ -1,0 +1,44 @@
+**/.classpath
+**/.project
+**/.factorypath
+**/autostart.sh
+**/Dockerfile
+**/.idea/
+**/*.iml
+
+
+
+**/.metadata/**
+**/.meta/**
+**/.recommenders/**
+**/.tmp/**
+**/.settings/**
+**/target/**
+**/.mvn/**
+
+
+**/bin/**
+**/.springBeans
+**/mvnw
+**/mvnw.cmd
+**/bin
+
+# **/resources/application.properties
+**/target
+**/logs
+*.class
+
+**/.externalToolBuilders/**
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+**/.DS_Store
