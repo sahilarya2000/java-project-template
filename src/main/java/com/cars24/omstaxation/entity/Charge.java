@@ -1,6 +1,7 @@
 package com.cars24.omstaxation.entity;
 
 import com.cars24.omstaxation.config.audit.Auditable;
+import com.cars24.omstaxation.constant.AmountType;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.envers.Audited;
@@ -9,6 +10,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,4 +39,7 @@ public class Charge extends Auditable<String> {
   @Column(name = "amount")
   private Double amount;
 
+  @Enumerated(EnumType.STRING)
+  @Column(name = "amount_type")
+  private AmountType amountType;
 }
