@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 
 /**
  * @author sauniksingh
@@ -23,7 +22,7 @@ public class TaxConfigDto {
     private Double cgst;
     @Min(value = 0, message = "CESS shouldn't be empty")
     private Double cess;
-    @NotBlank(message = "State Required")
-    private String state;
+    @Min(value = 0, message = "stateId shouldn't be empty")
+    private Long stateId;
     private long id;
 }

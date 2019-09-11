@@ -6,7 +6,7 @@ import com.cars24.omstaxation.exception.SystemException;
 import com.cars24.omstaxation.exception.TaxConfigNotFoundException;
 
 public interface TaxConfigService {
-    Response getTaxConfig(String state) throws TaxConfigNotFoundException;
+    Response getTaxConfig(Long stateId) throws TaxConfigNotFoundException;
 
     Response add(TaxConfigDto taxConfigDto, boolean isUpdate) throws SystemException;
 

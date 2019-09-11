@@ -7,5 +7,5 @@ import java.util.Optional;
 
 /**@author Saunik Singh*/
 public interface TaxConfigRepository extends JpaRepository<TaxConfig, Long> {
-    Optional<TaxConfig> findByState(String state);
+    Optional<TaxConfig> findByStateId(long state);
 }

@@ -7,7 +7,10 @@ import org.hibernate.envers.Audited;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-/**@author Saunik Singh*/
+
+/**
+ * @author Saunik Singh
+ */
 @Entity
 @Getter
 @Setter
@@ -15,17 +18,17 @@ import javax.persistence.*;
 @Table(name = "tax_config")
 @EntityListeners(AuditingEntityListener.class)
 public class TaxConfig extends Auditable<String> {
-  @Id
-  @Column(name="id")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  @Column(name="sgst")
-  private Double sgst;
-  @Column(name ="cgst")
-  private Double cgst;
-  @Column(name="cess")
-  private Double cess;
-  @Column(name = "state")
-  private String state;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "sgst")
+    private Double sgst;
+    @Column(name = "cgst")
+    private Double cgst;
+    @Column(name = "cess")
+    private Double cess;
+    @Column(name = "state_id")
+    private long stateId;
 }
 

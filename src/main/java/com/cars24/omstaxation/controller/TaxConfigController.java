@@ -24,11 +24,11 @@ public class TaxConfigController {
     @Autowired
     private TaxConfigService taxConfigService;
 
-    @GetMapping(value = "get/{state}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Response> get(@PathVariable String state) throws TaxConfigNotFoundException {
-        log.info("TaxConfig get {}", state);
-        Response response = taxConfigService.getTaxConfig(state);
-        log.info("TaxConfig get response for state: {}, response: {}", state, response);
+    @GetMapping(value = "get/{stateId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response> get(@PathVariable Long stateId) throws TaxConfigNotFoundException {
+        log.info("TaxConfig get {}", stateId);
+        Response response = taxConfigService.getTaxConfig(stateId);
+        log.info("TaxConfig get response for state: {}, response: {}", stateId, response);
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
     }
 

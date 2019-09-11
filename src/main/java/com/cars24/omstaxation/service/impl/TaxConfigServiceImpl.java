@@ -26,10 +26,10 @@ public class TaxConfigServiceImpl implements TaxConfigService {
     private TaxConfigRepository taxConfigRepository;
 
     @Override
-    public Response getTaxConfig(String state) throws TaxConfigNotFoundException {
-        Optional<TaxConfig> taxConfig = taxConfigRepository.findByState(state);
+    public Response getTaxConfig(Long stateId) throws TaxConfigNotFoundException {
+        Optional<TaxConfig> taxConfig = taxConfigRepository.findByStateId(stateId);
         if (!taxConfig.isPresent()) {
-            throw new TaxConfigNotFoundException(HttpStatus.NOT_FOUND.value(), state, "Tax details are not available for the state " + state);
+            throw new TaxConfigNotFoundException(HttpStatus.NOT_FOUND.value(), stateId.toString(), "Tax details are not available for the stateId " + stateId);
         }
         TaxConfigDto taxConfigDto = new TaxConfigDto();
         BeanUtils.copyProperties(taxConfig.get(), taxConfigDto);
@@ -38,9 +38,6 @@ public class TaxConfigServiceImpl implements TaxConfigService {
 
     @Override
     public Response add(TaxConfigDto taxConfigDto, boolean isUpdate) throws SystemException {
-        if (taxConfigDto == null) {
-            throw new SystemException(HttpStatus.BAD_REQUEST.value(), "Tax Details can't be save");
-        }
         if (taxConfigDto.getId() <= 0 && isUpdate) {
             throw new SystemException(HttpStatus.BAD_REQUEST.value(), "Tax Details can't be update, Id required");
         }
