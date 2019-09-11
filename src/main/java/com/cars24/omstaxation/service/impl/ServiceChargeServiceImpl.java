@@ -33,11 +33,10 @@ public class ServiceChargeServiceImpl implements ServiceChargeService {
     Response response;
 
     try {
-      ServiceCharge serviceCharge = new ServiceCharge();
-      BeanUtils.copyProperties(serviceChargeDto, serviceCharge);
+      ServiceCharge serviceCharge = fetchServiceCharge(serviceChargeDto.getId());
+      BeanUtils.copyProperties(serviceChargeDto, serviceCharge,"charges");
 
-      List<Charge> chargeList = chargeService.getChargeList(serviceChargeDto.getCharges());
-      chargeService.saveAll(chargeList);
+      List<Charge> chargeList = chargeService.getChargeList(serviceChargeDto.getCharges(),serviceCharge.getCharges());
 
       serviceCharge.setCharges(chargeList);
       serviceCharge = serviceChargeRepository.save(serviceCharge);
@@ -51,6 +50,15 @@ public class ServiceChargeServiceImpl implements ServiceChargeService {
     }
 
     return response;
+  }
+
+  private ServiceCharge fetchServiceCharge(Long id) {
+    ServiceCharge serviceCharge = new ServiceCharge();
+    Optional<ServiceCharge> serviceChargeOptional = serviceChargeRepository.findById(id);
+    if (serviceChargeOptional.isPresent()){
+      serviceCharge = serviceChargeOptional.get();
+    }
+    return serviceCharge;
   }
 
   @Override
