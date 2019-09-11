@@ -5,6 +5,7 @@ import com.cars24.omstaxation.constant.Mode;
 import com.cars24.omstaxation.constant.Type;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.envers.Audited;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -25,6 +26,7 @@ import java.util.List;
 @Getter
 @Setter
 @Audited
+@ToString
 @Table(name = "service_charge")
 @EntityListeners(AuditingEntityListener.class)
 public class ServiceCharge extends Auditable<String> {
