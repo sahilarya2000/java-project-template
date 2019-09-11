@@ -1,7 +1,7 @@
 package com.cars24.omstaxation.controller;
 
 import com.cars24.omstaxation.dto.TaxConfigDto;
-import com.cars24.omstaxation.exception.TaxConfigNotFoundException;
+import com.cars24.omstaxation.exception.SystemException;
 import com.cars24.omstaxation.response.CoreResponse;
 import com.cars24.omstaxation.response.ResponseCode;
 import com.cars24.omstaxation.service.TaxConfigService;
@@ -26,7 +26,7 @@ public class TaxConfigController extends BaseController {
     private TaxConfigService taxConfigService;
 
     @GetMapping(value = "getTax/{state}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CoreResponse<TaxConfigDto>> getTaxConfig(@PathVariable String state) throws TaxConfigNotFoundException {
+    public ResponseEntity<CoreResponse<TaxConfigDto>> getTaxConfig(@PathVariable String state) throws SystemException {
         log.info("[getTaxConfig] {}", createGetRequestInfo());
         TaxConfigDto taxConfig = taxConfigService.getTaxConfig(state);
         log.info("[getTaxConfig] taxConfig response for state: {}, response: {}", state, toJson(taxConfig));
