@@ -7,6 +7,7 @@ create table charge (
         amount double precision,
         range_end double precision,
         range_start double precision,
+        amount_type varchar(255),
         primary key (id)
     );
 create table charge_aud (
@@ -20,6 +21,7 @@ create table charge_aud (
         amount double precision,
         range_end double precision,
         range_start double precision,
+        amount_type varchar(255),
         primary key (id, rev)
     );
 create table revinfo (

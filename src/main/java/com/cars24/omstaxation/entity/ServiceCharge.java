@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.envers.Audited;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -41,7 +42,7 @@ public class ServiceCharge extends Auditable<String> {
   @Enumerated(EnumType.STRING)
   private Mode chargeMode;
 
-  @OneToMany
+  @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
   private List<Charge> charges;
 
   @Enumerated(EnumType.STRING)
