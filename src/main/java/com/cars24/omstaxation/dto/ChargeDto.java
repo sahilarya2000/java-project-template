@@ -1,11 +1,11 @@
 package com.cars24.omstaxation.dto;
 
-import com.cars24.omstaxation.constant.AmountType;
+import com.cars24.omstaxation.validation.NotNull;
+import com.cars24.omstaxation.validation.ValidateAmountType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -16,6 +16,6 @@ public class ChargeDto {
   private Double rangeEnd;
   @NotNull(message = "Amount Required")
   private Double amount;
-  @NotNull(message = "Amount Type Required")
-  private AmountType amountType;
+  @ValidateAmountType(message = "Invalid AmountType")
+  private String amountType;
 }

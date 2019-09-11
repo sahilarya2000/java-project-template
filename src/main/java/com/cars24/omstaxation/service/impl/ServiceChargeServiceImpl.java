@@ -1,5 +1,7 @@
 package com.cars24.omstaxation.service.impl;
 
+import com.cars24.omstaxation.constant.Mode;
+import com.cars24.omstaxation.constant.Type;
 import com.cars24.omstaxation.dto.ChargeDto;
 import com.cars24.omstaxation.dto.ServiceChargeDto;
 import com.cars24.omstaxation.dto.response.Response;
@@ -35,6 +37,8 @@ public class ServiceChargeServiceImpl implements ServiceChargeService {
     try {
       ServiceCharge serviceCharge = fetchServiceCharge(serviceChargeDto.getId());
       BeanUtils.copyProperties(serviceChargeDto, serviceCharge,"charges");
+      serviceCharge.setChargeType(Type.getType(serviceChargeDto.getChargeType()));
+      serviceCharge.setChargeMode(Mode.getMode(serviceChargeDto.getChargeMode()));
 
       List<Charge> chargeList = chargeService.getChargeList(serviceChargeDto.getCharges(),serviceCharge.getCharges());
 

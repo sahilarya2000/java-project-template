@@ -2,12 +2,13 @@ package com.cars24.omstaxation.controller;
 
 import com.cars24.omstaxation.dto.ServiceChargeDto;
 import com.cars24.omstaxation.dto.response.Response;
-import com.cars24.omstaxation.entity.ServiceCharge;
+import com.cars24.omstaxation.exception.ValidationException;
 import com.cars24.omstaxation.service.ServiceChargeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +38,8 @@ public class ServiceChargeController {
   }
 
   @PutMapping("/update")
-  public ResponseEntity<Response> update(@Valid @RequestBody ServiceChargeDto serviceChargeDto){
+  public ResponseEntity<Response> update(@Valid @RequestBody ServiceChargeDto serviceChargeDto, BindingResult bindingResult){
+    if (bindingResult.hasErrors()) throw new ValidationException(bindingResult.getAllErrors().get(0).getDefaultMessage());
     log.info("service charge add api called : {} ", serviceChargeDto);
     Response response = serviceChargeService.add(serviceChargeDto);
     log.info("service charge add api response  : {} ", response);
@@ -45,7 +47,8 @@ public class ServiceChargeController {
   }
 
   @PostMapping("/add")
-  public ResponseEntity<Response> add(@Valid @RequestBody ServiceChargeDto serviceChargeDto){
+  public ResponseEntity<Response> add(@Valid @RequestBody ServiceChargeDto serviceChargeDto, BindingResult bindingResult){
+    if (bindingResult.hasErrors()) throw new ValidationException(bindingResult.getAllErrors().get(0).getDefaultMessage());
     log.info("service charge add api called : {} ", serviceChargeDto);
     Response response = serviceChargeService.add(serviceChargeDto);
     log.info("service charge add api response  : {} ", response);

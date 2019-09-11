@@ -1,5 +1,6 @@
 package com.cars24.omstaxation.service.impl;
 
+import com.cars24.omstaxation.constant.AmountType;
 import com.cars24.omstaxation.dto.ChargeDto;
 import com.cars24.omstaxation.entity.Charge;
 import com.cars24.omstaxation.repository.ChargeRepository;
@@ -31,6 +32,7 @@ public class ChargeServiceImpl implements ChargeService {
     for (ChargeDto chargeDto : charges) {
       Charge charge = fetchChargeObject(chargeDto.getId());
       BeanUtils.copyProperties(chargeDto, charge);
+      charge.setAmountType(AmountType.get(chargeDto.getAmountType()));
       chargeList.add(charge);
     }
     return chargeList;
