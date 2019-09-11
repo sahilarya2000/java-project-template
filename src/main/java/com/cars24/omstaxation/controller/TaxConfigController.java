@@ -32,7 +32,7 @@ public class TaxConfigController {
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
     }
 
-    @PutMapping("/update")
+    @PutMapping("update")
     public ResponseEntity<Response> update(@Valid @RequestBody TaxConfigDto taxConfigDto) {
         log.info("TaxConfig update : {} ", taxConfigDto);
         Response response = taxConfigService.add(taxConfigDto, true);
@@ -40,7 +40,7 @@ public class TaxConfigController {
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
     }
 
-    @PostMapping("/add")
+    @PostMapping("add")
     public ResponseEntity<Response> add(@Valid @RequestBody TaxConfigDto taxConfigDto) {
         log.info("TaxConfig add : {} ", taxConfigDto);
         Response response = taxConfigService.add(taxConfigDto, false);
@@ -48,7 +48,7 @@ public class TaxConfigController {
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Response> delete(@PathVariable Long id){
         log.info("TaxConfig delete api called id :  {} ", id);
         Response response = taxConfigService.delete(id);
