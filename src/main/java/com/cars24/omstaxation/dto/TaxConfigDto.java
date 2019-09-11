@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 /**
  * @author sauniksingh
@@ -16,13 +17,13 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(value = JsonInclude.Include.ALWAYS)
 @ToString
 public class TaxConfigDto {
-    @NotNull(message = "SGST can't be null")
+    @Min(value = 0, message = "SGST shouldn't be empty")
     private Double sgst;
-    @NotNull(message = "CGST can't be null")
+    @Min(value = 0, message = "CGST shouldn't be empty")
     private Double cgst;
-    @NotNull(message = "Cess can't be null")
+    @Min(value = 0, message = "CESS shouldn't be empty")
     private Double cess;
-    @NotNull(message = "State Required")
+    @NotBlank(message = "State Required")
     private String state;
     private long id;
 }
