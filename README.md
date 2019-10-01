@@ -1,2 +1,2 @@
-# oms-taxation
+# java-project-template
 
