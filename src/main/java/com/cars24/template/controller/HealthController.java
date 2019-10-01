@@ -1,4 +1,4 @@
-package com.cars24.omstaxation.controller;
+package com.cars24.template.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
