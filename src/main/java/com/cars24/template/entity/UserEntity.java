@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Setter
 @ToString
 @Entity
-@Table(name = "user_data")
+@Table(name = "lms_users")
  public class UserEntity {
 
    @Id
